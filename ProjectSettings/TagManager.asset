@@ -47,6 +47,9 @@ TagManager:
   - name: Walk Infront
     uniqueID: 2160887889
     locked: 0
+  - name: Walk Infront 2
+    uniqueID: 4276121065
+    locked: 0
   - name: Collision
     uniqueID: 3647673961
     locked: 0
