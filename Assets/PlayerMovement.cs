@@ -3,7 +3,9 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float speed = 3f;
+    [SerializeField] private float speed = 2f;
+    [SerializeField] private float walkSpeed = 2f;
+    [SerializeField] private float sprintSpeed = 4f;
     private Rigidbody2D rb;
     private Vector2 input;
     private Animator animator;
@@ -32,5 +34,21 @@ public class PlayerMovement : MonoBehaviour
         input = context.ReadValue<Vector2>();
         animator.SetFloat("InputX", input.x);
         animator.SetFloat("InputY", input.y);
+    }
+
+    public void Sprint(InputAction.CallbackContext context)
+    {
+        if (context.started || context.performed)
+        {
+            animator.SetBool("IsSprinting", true);
+            speed = sprintSpeed;
+        }
+        else if (context.canceled)
+        {
+            animator.SetBool("IsSprinting", false);
+            speed = walkSpeed;
+            animator.SetFloat("LastInputX", input.x);
+            animator.SetFloat("LastInputY", input.y);
+        }
     }
 }
