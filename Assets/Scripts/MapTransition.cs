@@ -36,10 +36,10 @@ public class MapTransition : MonoBehaviour
                 new_position.y -= 3;
                 break;
             case Direction.Left:
-                new_position.x += 3;
+                new_position.x += 1;
                 break;
             case Direction.Right:
-                new_position.x -= 3;
+                new_position.x -= 1;
                 break;
         }
 
